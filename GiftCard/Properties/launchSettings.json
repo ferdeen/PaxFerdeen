@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GiftCard": {
+      "commandName": "Project",
+      "commandLineArgs": "find-pair prices.txt 2300"
+    }
+  }
+}
