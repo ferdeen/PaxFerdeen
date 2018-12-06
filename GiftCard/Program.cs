@@ -70,7 +70,7 @@ namespace GiftCard
             return items;
         }
 
-        private static List<Tuple<string, long>> GetPairOfGifts(List<Tuple<string, long>> gifts, long balance)
+        private static IList<Tuple<string, long>> GetPairOfGifts(List<Tuple<string, long>> gifts, long balance)
         {
             var selectedGifts = new List<List<Tuple<string, long>>>();
 
