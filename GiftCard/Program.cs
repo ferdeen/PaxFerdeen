@@ -76,9 +76,9 @@ namespace GiftCard
 
         private static IList<Tuple<string, long>> GetPairOfGiftsFast(List<Tuple<string, long>> gifts, long balance, long giftCount = 2)
         {
-            List<Tuple<string, long>> selectedGifts = new List<Tuple<string, long>>();
+            var selectedGifts = new List<Tuple<string, long>>();
 
-            Queue<Tuple<string, long>> itemsSelected = new Queue<Tuple<string, long>>();
+            var itemsSelected = new Queue<Tuple<string, long>>();
 
             long currentBalance = balance;
 
