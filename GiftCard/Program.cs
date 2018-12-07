@@ -9,11 +9,11 @@ namespace GiftCard
     {
         /// <summary>
         /// Console app takes the following arguments.
-        /// [Command] [File] [Balance] - e.g find-pair prices.txt 2300
+        /// [Command] [File] [Balance] [GiftCount] - e.g find-pair prices.txt 2300 2
         /// </summary>
         static void Main(string[] args)
         {
-            if (args.Length < 3)
+            if (args.Length < 4)
             {
                 Console.WriteLine("Invalid argument list");
                 return;
@@ -22,12 +22,14 @@ namespace GiftCard
             var command = args[0];
             var file = args[1];
             var balance = Convert.ToInt64(args[2]);
+            var amountOfGifts = Convert.ToInt64(args[3]);
 
             if (command.Equals("find-pair"))
             {
                 try
                 {
-                    var result = GetPairOfGifts(ReadFile(file), balance);
+                    var result = GetPairOfGiftsFast(ReadFile(file), balance, amountOfGifts);
+                    //var result = GetPairOfGifts(ReadFile(file), balance);
 
                     if (result.Count > 0)
                     {
@@ -54,6 +56,8 @@ namespace GiftCard
             Console.ReadLine();
         }
 
+
+
         private static List<Tuple<string, long>> ReadFile(string fileName)
         {
             string[] lines = File.ReadAllLines(fileName);
@@ -68,6 +72,44 @@ namespace GiftCard
             }
 
             return items;
+        }
+
+        private static IList<Tuple<string, long>> GetPairOfGiftsFast(List<Tuple<string, long>> gifts, long balance, long giftCount = 2)
+        {
+            List<Tuple<string, long>> selectedGifts = new List<Tuple<string, long>>();
+
+            Queue<Tuple<string, long>> itemsSelected = new Queue<Tuple<string, long>>();
+
+            long currentBalance = balance;
+
+            for (int i = gifts.Count - 1; i > 0; i--)
+            {
+                if (gifts[i].Item2 < balance)
+                {
+                    if (itemsSelected.Sum(x => x.Item2) > balance)
+                    {
+                        itemsSelected.Dequeue();
+                    }
+                    else
+                    {
+                        itemsSelected.Enqueue(gifts[i]);
+                    }
+                }
+            }
+
+            foreach (var item in itemsSelected)
+            {
+                if (itemsSelected.Count > 0 && itemsSelected.Count <= giftCount)
+                {
+                    selectedGifts.Add(item);
+                }
+                else
+                {
+                    break;
+                }
+            }            
+
+            return selectedGifts;
         }
 
         private static IList<Tuple<string, long>> GetPairOfGifts(List<Tuple<string, long>> gifts, long balance)

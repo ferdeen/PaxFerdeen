@@ -30,3 +30,4 @@ C:\Users\AdeyesAdmin\Source\Repos\PaxFerdeen\GiftCard\obj\Debug\netcoreapp2.1\Gi
 C:\Users\AdeyesAdmin\Source\Repos\PaxFerdeen\GiftCard\obj\Debug\netcoreapp2.1\GiftCard.AssemblyInfo.cs
 C:\Users\AdeyesAdmin\Source\Repos\PaxFerdeen\GiftCard\obj\Debug\netcoreapp2.1\GiftCard.dll
 C:\Users\AdeyesAdmin\Source\Repos\PaxFerdeen\GiftCard\obj\Debug\netcoreapp2.1\GiftCard.pdb
+C:\Users\AdeyesAdmin\Source\Repos\PaxFerdeen\GiftCard\obj\Debug\netcoreapp2.1\GiftCard.csprojAssemblyReference.cache
